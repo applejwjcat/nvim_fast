@@ -19,31 +19,31 @@ source $HOME/.config/nvim/themes/lightline.vim
 " source $HOME/.config/nvim/themes/airline.vim
 
 " Plugin Configuration
-source $HOME/.config/nvim/plug-config/rnvimr.vim
-source $HOME/.config/nvim/plug-config/fzf.vim
-source $HOME/.config/nvim/plug-config/vim-commentary.vim
-source $HOME/.config/nvim/plug-config/rainbow.vim
-source $HOME/.config/nvim/plug-config/codi.vim
-source $HOME/.config/nvim/plug-config/quickscope.vim
-source $HOME/.config/nvim/plug-config/vim-wiki.vim
-source $HOME/.config/nvim/plug-config/sneak.vim
-source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/goyo.vim
-source $HOME/.config/nvim/plug-config/vim-rooter.vim
-source $HOME/.config/nvim/plug-config/start-screen.vim
-source $HOME/.config/nvim/plug-config/gitgutter.vim
-source $HOME/.config/nvim/plug-config/floaterm.vim
-source $HOME/.config/nvim/plug-config/vista.vim
-source $HOME/.config/nvim/plug-config/xtabline.vim
-source $HOME/.config/nvim/plug-config/polyglot.vim
-source $HOME/.config/nvim/plug-config/far.vim
-source $HOME/.config/nvim/plug-config/tagalong.vim
-source $HOME/.config/nvim/plug-config/illuminate.vim
-source $HOME/.config/nvim/plug-config/bracey.vim
-source $HOME/.config/nvim/plug-config/asynctask.vim
-source $HOME/.config/nvim/plug-config/markdown-preview.vim
-source $HOME/.config/nvim/plug-config/go.vim
-source $HOME/.config/nvim/plug-config/undotree.vim
+source $HOME/.config/nvim/settings-plug/rnvimr.vim
+source $HOME/.config/nvim/settings-plug/fzf.vim
+source $HOME/.config/nvim/settings-plug/vim-commentary.vim
+source $HOME/.config/nvim/settings-plug/rainbow.vim
+source $HOME/.config/nvim/settings-plug/codi.vim
+source $HOME/.config/nvim/settings-plug/quickscope.vim
+source $HOME/.config/nvim/settings-plug/vim-wiki.vim
+source $HOME/.config/nvim/settings-plug/sneak.vim
+source $HOME/.config/nvim/settings-plug/coc.vim
+source $HOME/.config/nvim/settings-plug/goyo.vim
+source $HOME/.config/nvim/settings-plug/vim-rooter.vim
+source $HOME/.config/nvim/settings-plug/start-screen.vim
+source $HOME/.config/nvim/settings-plug/gitgutter.vim
+source $HOME/.config/nvim/settings-plug/floaterm.vim
+source $HOME/.config/nvim/settings-plug/vista.vim
+source $HOME/.config/nvim/settings-plug/xtabline.vim
+source $HOME/.config/nvim/settings-plug/polyglot.vim
+source $HOME/.config/nvim/settings-plug/far.vim
+source $HOME/.config/nvim/settings-plug/tagalong.vim
+source $HOME/.config/nvim/settings-plug/illuminate.vim
+source $HOME/.config/nvim/settings-plug/bracey.vim
+source $HOME/.config/nvim/settings-plug/asynctask.vim
+source $HOME/.config/nvim/settings-plug/markdown-preview.vim
+source $HOME/.config/nvim/settings-plug/go.vim
+source $HOME/.config/nvim/settings-plug/undotree.vim
 luafile $HOME/.config/nvim/lua/plug-colorizer.lua
 
 " Add paths to node and python here
@@ -56,5 +56,5 @@ let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' )
 " let g:vimspector_enable_mappings='HUMAN'
 " 
 " disable the closetags
-"source $HOME/.config/nvim/plug-config/closetags.vim
-"source $HOME/.config/nvim/plug-config/window-swap.vim
+"source $HOME/.config/nvim/settings-plug/closetags.vim
+"source $HOME/.config/nvim/settings-plug/window-swap.vim
