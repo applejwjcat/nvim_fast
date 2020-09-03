@@ -48,8 +48,9 @@ set listchars=tab:\|\ ,trail:▫
 set hlsearch            " 高亮显示搜索结果
 set incsearch           " 开启实时搜索功能
 exec "nohlsearch"
+
 "set python host
-let g:python3_host_skip_check=1
+" let g:python3_host_skip_check=1
 let g:python3_host_prog = '/usr/bin/python3'
 let g:node_host_prog = '/usr/lib/node_modules/neovim/bin/cli.js'
 " 打开文件自动定位到最后编辑的位置
@@ -74,6 +75,13 @@ set guifont=Fira\ Code\ Nerd\ Font
 " set foldcolumn=2                        " Folding abilities
 
 " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
-autocmd BufReadPost,BufNewFile *.md setlocal spell
 " You can't stop me
 cmap w!! w !sudo tee %
+" set correct plugin file according to the plugin manager
+if exists('g:loaded_plug')
+    let g:plugin_manager_file = '$MYNVIM/vim-plug/plugins.vim'
+    let g:plugin_core_file = '$MYNVIM/vim-plug/core.vim'
+else
+    let g:plugin_manager_file = '$MYNVIM/dein/plugin.vim'
+    let g:plugin_core_file = '$MYNVIM/dein/core.vim'
+endif

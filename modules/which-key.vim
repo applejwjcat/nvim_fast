@@ -49,8 +49,9 @@ let g:which_key_map['z'] = [ 'Goyo'                               , 'zen' ]
 " v is for open settings fast
 let g:which_key_map.v = {
   \ 'name' : '+load-settings' ,
-  \ 'c' : [':e $MYNVIM/general/settings.vim'   , 'load settings'],
-  \ 'p' : [':e $MYNVIM/vim-plug/plugins.vim'   , 'load plugins'],
+  \ 'c' : [':e ' . g:plugin_core_file           , 'load core_file'],
+  \ 'p' : [':e ' . g:plugin_manager_file        , 'load plugins'],
+  \ 's' : [':e $MYNVIM/modules/settings.vim'   , 'load settings'],
   \ 'v' : ['<C-W>v'                            , 'split right'],
   \ }
 " , is for plug
