@@ -9,77 +9,142 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
   " Change dates fast
-  Plug 'tpope/vim-speeddating'
+  Plug 'tpope/vim-speeddating', {'on':[]}
   " Files
-  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-eunuch', {'on': []}
   " Repeat stuff
-  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-repeat', {'on': []}
   " Surround
-  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-surround', {'on': []}
   " Better Comments
-  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-commentary', {'on': []}
   " Have the file system follow you around
-  Plug 'airblade/vim-rooter'
+  Plug 'airblade/vim-rooter', {'on':[]}
   " auto set indent settings
   "Plug 'tpope/vim-sleuth'
 
   " Text Navigation
-  Plug 'justinmk/vim-sneak'
-  Plug 'unblevable/quick-scope'
+  Plug 'justinmk/vim-sneak', {'on': []}
+  Plug 'unblevable/quick-scope', {'on': []}
   " Add some color
-  Plug 'norcalli/nvim-colorizer.lua'
-  Plug 'luochen1990/rainbow'
+  Plug 'norcalli/nvim-colorizer.lua',{'on': []}
+  Plug 'luochen1990/rainbow', {'on':[]}
   " Better Syntax Support
-  Plug 'sheerun/vim-polyglot'
+  Plug 'sheerun/vim-polyglot', {'on':[]}
   " Cool Icons
-  Plug 'ryanoasis/vim-devicons'
+  Plug 'ryanoasis/vim-devicons',{'on':[]}
   " Auto pairs for '(' '[' '{'
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'jiangmiao/auto-pairs', {'on':[]}
   " Themes
-  Plug 'ChristianChiarulli/onedark.vim'
+  " Plug 'ChristianChiarulli/onedark.vim'
+  Plug 'joshdick/onedark.vim'
   " Intellisense
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release',}
   " Status Line
-  Plug 'itchyny/lightline.vim'
+  Plug 'itchyny/lightline.vim',{'on' : []}
 
-  Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+  Plug 'kevinhwang91/rnvimr'
   " FZF
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf', {'do' : './install --bin', 'frozen' : 1}
   Plug 'junegunn/fzf.vim'
   " Git
-  Plug 'airblade/vim-gitgutter'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'junegunn/gv.vim'
+  Plug 'airblade/vim-gitgutter',{'on' :[]}
+  Plug 'tpope/vim-fugitive',{'on': []}
+  Plug 'tpope/vim-rhubarb', {'on':[]}
+  Plug 'junegunn/gv.vim', {'on': []}
   " Terminal
   Plug 'voldikss/vim-floaterm'
   " Start Screen
-  Plug 'mhinz/vim-startify'
+  Plug 'hardcoreplayers/dashboard-nvim'
+  " Plug 'mhinz/vim-startify'
   " Vista
-  Plug 'liuchengxu/vista.vim'
+  Plug 'liuchengxu/vista.vim', {'on' : []}
   " See what keys do like in emacs
   Plug 'liuchengxu/vim-which-key'
   " Zen mode
-  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
   " Snippets
-  Plug 'honza/vim-snippets'
+  Plug 'honza/vim-snippets', {'on': []}
   " Plug 'mattn/emmet-vim'
   " Interactive code
-  Plug 'metakirby5/codi.vim'
+  Plug 'metakirby5/codi.vim', {'on': []}
   " Debugging
   " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
   " Better tabline
-  Plug 'mg979/vim-xtabline'
+  Plug 'mengelbrecht/lightline-bufferline',{'on' :[]}
   " undo time travel
-  Plug 'mbbill/undotree'
+  Plug 'applejwjcat/undotree', {'on': []}
   " highlight all matches under cursor
-  Plug 'RRethy/vim-illuminate'
+  Plug 'RRethy/vim-illuminate', {'on': []}
   " Find and replace
-  Plug 'ChristianChiarulli/far.vim'
+  Plug 'ChristianChiarulli/far.vim', {'on' :[]}
   " Auto change html tags
-  Plug 'AndrewRadev/tagalong.vim', { 'for': ['php', 'html', 'javascript'] }
+  Plug 'AndrewRadev/tagalong.vim', {'on' :[]}
   " live server
-  Plug 'turbio/bracey.vim', {'for': ['css', 'html','javascript']}
+  Plug 'turbio/bracey.vim', {'on' : []}
+  " Markdown Preview
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
+  " Easily Create Gists
+  Plug 'mattn/vim-gist', {'on': []}
+  " Plug 'mattn/webapi-vim'
+  " Add go support
+  Plug 'fatih/vim-go', {'on':[]}
+  Plug 'godlygeek/tabular', {'on': []}
+  Plug 'lervag/vimtex', {'for': 'plaintex'}
+
+call plug#end()
+
+autocmd BufReadPost * ++once call itself#auto_load(
+    \ 'vista.vim'
+    \)
+
+autocmd BufReadPost,BufNewFile * ++once call itself#auto_load(
+    \ 'vim-fugitive',
+    \ 'undotree',
+    \ 'vim-illuminate',
+    \ 'auto-pairs',
+    \ 'vim-commentary',
+    \ 'vim-surround',
+    \ 'vim-speeddating',
+    \ 'rainbow',
+    \ 'vim-sneak',
+    \ 'vim-gitgutter',
+    \ 'vim-polyglot',
+    \ 'lightline.vim',
+    \ 'lightline-bufferline',
+    \ 'vim-devicons',
+    \ 'far.vim'
+    \)
+
+autocmd CmdlineEnter * ++once call itself#auto_load(
+    \ 'vim-eunuch',
+    \ 'tabular'
+    \)
+autocmd CursorHold,CursorHoldI * ++once call itself#auto_load(
+    \ 'codi.vim',
+    \ 'gv.vim',
+    \ 'vim-repeat',
+    \ 'vim-gist',
+    \ 'vim-rhubarb',
+    \ 'vim-rooter',
+    \)
+autocmd BufReadPost,BufNewFile *.go ++once call itself#auto_load('vim-go')
+
+autocmd InsertEnter * ++once call itself#auto_load('vim-snippets')
+
+autocmd BufReadPost,BufNewFile *.html,*.css,*.js,*.ts,*.php ++once call itself#auto_load(
+    \ 'tagalong',
+    \ 'bracey'
+  \ )
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
+  " Plugin Graveyard
+
   " Smooth scroll
   " Plug 'psliwka/vim-smoothie'
   " async tasks
@@ -87,17 +152,6 @@ call plug#begin('~/.config/nvim/plugged')
   "Plug 'skywind3000/asyncrun.vim'
   " Swap windows
   " Plug 'wesQ3/vim-windowswap'
-  " Markdown Preview
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install', 'for': 'markdown'  }
-  " Easily Create Gists
-  Plug 'mattn/vim-gist'
-  " Plug 'mattn/webapi-vim'
-  " Add go support
-  Plug 'fatih/vim-go', {'for': 'go'}
-  Plug 'godlygeek/tabular'
-
-  " Plugin Graveyard
-
   " Better Whitespace
   " Plug 'ntpeters/vim-better-whitespace'
   " jsx syntax support
@@ -132,11 +186,3 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'atishay/far.vim'
   " Closetags
   " Plug 'alvan/vim-closetag'
-
-call plug#end()
-
-" Automatically install missing plugins on startup
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
