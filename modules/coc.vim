@@ -36,7 +36,6 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
    \ ]
 
 let g:coc_data_home='$MYNVIM/coc'
-let g:coc_config_home='$MYNVIM/coc'
 
 "auto format cpp file when type
 autocmd FileType c,cpp inoremap ; ;<Esc>:Format<CR>f;a
