@@ -38,13 +38,13 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
 let g:coc_data_home='$MYNVIM/coc'
 
 "auto format cpp file when type
-autocmd FileType c,cpp inoremap ; ;<Esc>:Format<CR>f;a
+autocmd FileType c,cpp inoremap ; ;<Esc>:Format<CR>bf;a
 " use <C-t> to trigger the translator
 nmap <c-t> <Plug>(coc-translator-p)
 vmap <c-t> <Plug>(coc-translator-pv)
 
 " get correct comment highlighting
-autocmd FileType json syntax match Comment +\/\/.\+$+
+" autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>

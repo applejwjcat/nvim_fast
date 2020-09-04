@@ -24,7 +24,7 @@ call plug#begin('~/.config/nvim/plugged')
   "Plug 'tpope/vim-sleuth'
 
   " Text Navigation
-  Plug 'justinmk/vim-sneak', {'on': []}
+  Plug 'justinmk/vim-sneak', {'on': [], 'as': 'sneak'}
   Plug 'unblevable/quick-scope', {'on': []}
   " Add some color
   Plug 'norcalli/nvim-colorizer.lua',{'on': []}
@@ -36,7 +36,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Auto pairs for '(' '[' '{'
   Plug 'jiangmiao/auto-pairs', {'on':[]}
   " Themes
-  " Plug 'ChristianChiarulli/onedark.vim'
   Plug 'joshdick/onedark.vim'
   " Intellisense
   Plug 'neoclide/coc.nvim', {'branch': 'release',}
@@ -94,20 +93,18 @@ call plug#begin('~/.config/nvim/plugged')
 
 call plug#end()
 
-autocmd BufReadPost * ++once call itself#auto_load(
+autocmd BufReadPost * ++once call itself#auto_load('post_source',
     \ 'vista.vim'
     \)
 
-autocmd BufReadPost,BufNewFile * ++once call itself#auto_load(
+autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'vim-fugitive',
-    \ 'undotree',
     \ 'vim-illuminate',
     \ 'auto-pairs',
     \ 'vim-commentary',
     \ 'vim-surround',
     \ 'vim-speeddating',
     \ 'rainbow',
-    \ 'vim-sneak',
     \ 'vim-gitgutter',
     \ 'vim-polyglot',
     \ 'lightline.vim',
@@ -116,11 +113,15 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load(
     \ 'far.vim'
     \)
 
-autocmd CmdlineEnter * ++once call itself#auto_load(
+autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
+    \ 'sneak',
+    \ 'undotree'
+    \)
+autocmd CmdlineEnter * ++once call itself#auto_load('post_source',
     \ 'vim-eunuch',
     \ 'tabular'
     \)
-autocmd CursorHold,CursorHoldI * ++once call itself#auto_load(
+autocmd CursorHold,CursorHoldI * ++once call itself#auto_load('post_source',
     \ 'codi.vim',
     \ 'gv.vim',
     \ 'vim-repeat',
@@ -128,11 +129,11 @@ autocmd CursorHold,CursorHoldI * ++once call itself#auto_load(
     \ 'vim-rhubarb',
     \ 'vim-rooter',
     \)
-autocmd BufReadPost,BufNewFile *.go ++once call itself#auto_load('vim-go')
+autocmd BufReadPost,BufNewFile *.go ++once call itself#auto_load('post_source','vim-go')
 
-autocmd InsertEnter * ++once call itself#auto_load('vim-snippets')
+autocmd InsertEnter * ++once call itself#auto_load('post_source','vim-snippets')
 
-autocmd BufReadPost,BufNewFile *.html,*.css,*.js,*.ts,*.php ++once call itself#auto_load(
+autocmd BufReadPost,BufNewFile *.html,*.css,*.js,*.ts,*.php ++once call itself#auto_load('post_source',
     \ 'tagalong',
     \ 'bracey'
   \ )

@@ -20,15 +20,17 @@ source $HOME/.config/nvim/modules/rnvimr.vim
 source $HOME/.config/nvim/modules/coc.vim
 source $HOME/.config/nvim/modules/dashboard.vim
 source $HOME/.config/nvim/modules/fzf.vim
+source $HOME/.config/nvim/modules/commentary.vim
+" source $HOME/.config/nvim/modules/undotree.vim
 " source $HOME/.config/nvim/modules/lightline.vim
 " source $HOME/.config/nvim/modules/vim-gitgutter.vim
 source $HOME/.config/nvim/modules/floaterm.vim
 " source $HOME/.config/nvim/modules/vim-polyglot.vim
 " source $HOME/.config/nvim/modules/tagalong.vim
-source $HOME/.config/nvim/modules/sneak.vim
+" source $HOME/.config/nvim/modules/sneak.vim
 " source $HOME/.config/nvim/modules/bracey.vim
 " source $HOME/.config/nvim/modules/asynctask.vim
 source $HOME/.config/nvim/modules/markdown-preview.vim
 " source $HOME/.config/nvim/modules/vim-go.vim
-source $HOME/.config/nvim/modules/vimtex.vim
+" source $HOME/.config/nvim/modules/vimtex.vim
 " luafile $HOME/.config/nvim/lua/plug-colorizer.lua

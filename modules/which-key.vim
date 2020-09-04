@@ -23,7 +23,7 @@ highlight default link WhichKeyDesc      Function
 " Hide status line
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
-            \| autocmd BufLeave <buffer> if &ft != 'dashboard'|set laststatus=2|else|set laststatus=0|endif
+            \| autocmd BufEnter <buffer> if &ft!='dashboard'|set laststatus=2|endif
 
 
 " Single mappings
@@ -33,11 +33,11 @@ let g:which_key_map[','] = [ ':source $MYVIMRC'                   , 'source init
 let g:which_key_map[';'] = [ ':Commands'                          , 'commands' ]
 let g:which_key_map['='] = [ '<C-W>='                             , 'balance windows' ]
 let g:which_key_map['d'] = [ ':bd'                                , 'delete buffer']
+" let g:which_key_map['D'] = [ 'Dashboard'                          , 'start board' ]
 let g:which_key_map['e'] = [ ':CocCommand explorer'               , 'explorer' ]
 let g:which_key_map['f'] = [ ':Farr'                              , 'find and replace' ]
 let g:which_key_map['h'] = [ '<C-W>s'                             , 'split below']
 let g:which_key_map['m'] = [ ':call WindowSwap#EasyWindowSwap()'  , 'move window' ]
-let g:which_key_map['o'] = [ 'Startify'                           , 'start screen' ]
 let g:which_key_map['q'] = [ 'q'                                  , 'quit' ]
 let g:which_key_map['r'] = [ ':RnvimrToggle'                      , 'ranger' ]
 let g:which_key_map['S'] = [ ':SSave'                             , 'save session' ]

@@ -1,7 +1,7 @@
 {
 	"coc.preferences.hoverTarget": "float",
 	"coc.preferences.enableFloatHighlight": true,
-	//	"coc.preferences.snippetStatusText": "Ⓢ ", "🌟"
+	// "coc.preferences.snippetStatusText": "Ⓢ ", "🌟"
 	"coc.preferences.snippetStatusText": "🌟",
 	"coc.preferences.extensionUpdateCheck": "daily",
 	"coc.preferences.previewMaxHeight": 20,
@@ -170,7 +170,7 @@
 	"git.changeRemovedSign.text": "▒",
 	"git.enableGlobalStatus": false,
 	"git.signOffset": 2,
-	"pairs.disableLanguages": ["cpp"],
+	// "pairs.disableLanguages": ["cpp", "c"],
 	"flutter.openDevLogSplitCommand": "botright 12split",
 	"tslint.autoFixOnSave": false,
 	"python.autoComplete.addBrackets": true,
