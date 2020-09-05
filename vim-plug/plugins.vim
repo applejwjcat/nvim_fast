@@ -88,6 +88,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'mattn/webapi-vim'
   " Add go support
   Plug 'fatih/vim-go', {'on':[]}
+  " Plug 'fatih/vim-go'
   Plug 'godlygeek/tabular', {'on': []}
   Plug 'lervag/vimtex', {'for': 'plaintex'}
 
@@ -115,6 +116,9 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
     \ 'sneak',
+    \)
+
+autocmd BufReadPre,BufNewFile * ++once call itself#auto_load('source',
     \ 'undotree'
     \)
 autocmd CmdlineEnter * ++once call itself#auto_load('post_source',
@@ -129,7 +133,7 @@ autocmd CursorHold,CursorHoldI * ++once call itself#auto_load('post_source',
     \ 'vim-rhubarb',
     \ 'vim-rooter',
     \)
-autocmd BufReadPost,BufNewFile *.go ++once call itself#auto_load('post_source','vim-go')
+autocmd BufReadPre,BufNewFile *.go ++once call itself#auto_load('source','vim-go')
 
 autocmd InsertEnter * ++once call itself#auto_load('post_source','vim-snippets')
 

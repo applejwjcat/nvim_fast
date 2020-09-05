@@ -19,17 +19,17 @@ let g:floaterm_autoclose=1
 nnoremap r :call CompileRun()<CR>
 function! CompileRun()
 		let pathfile = expand('%:p')
-		let filename = @%
+		let filename = expand('%:t:r')
 		if &filetype == 'cpp'
-				let command = "FloatermNew g++ " . pathfile . " -o /tmp/" . filename . ".out;/tmp/" . filename . ".out;read \\?\"Press enter to continue...\";exit"
+				let command = "FloatermNew g++ " . pathfile . " -o /tmp/" . filename . ".out;/tmp/" . filename . ".out;read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'c'
-				let command = "FloatermNew gcc " . pathfile . " -o /tmp/" . filename . ".out;/tmp/" . filename . ".out;read \\?\"Press enter to continue...\";exit"
+				let command = "FloatermNew gcc " . pathfile . " -o /tmp/" . filename . ".out;/tmp/" . filename . ".out;read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'go'
-				let command = "FloatermNew go run " . pathfile . ";read \\?\"Press enter to continue...\";exit"
+				let command = "FloatermNew go run " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'sh'
-				let command = "FloatermNew bash " . pathfile . ";read \\?\"Press enter to continue...\";exit"
+				let command = "FloatermNew bash " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'python'
-				let command = "FloatermNew python " . pathfile . ";read \\?\"Press enter to continue...\";exit"
+				let command = "FloatermNew python " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
 		endif
         exec "w"
  		execute (command)

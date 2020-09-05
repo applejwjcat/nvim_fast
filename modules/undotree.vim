@@ -12,5 +12,17 @@ if has('persistent_undo')
     set undodir=~/.config/nvim/generate/undotreetmp/undo,.
 endif
 
-let g:undotree_debugenable = 0
-let g:undotree_debugfile = $HOME.'/.config/nvim/generate/undotreetmp/undotree.log'
+" let g:undotree_debugenable = 0
+" let g:undotree_debugfile = $HOME.'/.config/nvim/generate/undotreetmp/undotree.log'
+let g:undotree_DiffAutoOpen = 1
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_ShortIndicators = 1
+let g:undotree_WindowLayout = 2
+let g:undotree_DiffpanelHeight = 8
+let g:undotree_SplitWidth = 24
+function g:Undotree_CustomMap()
+	nmap <buffer> n <plug>UndotreeNextState
+	nmap <buffer> p <plug>UndotreePreviousState
+	nmap <buffer> N 5<plug>UndotreeNextState
+	nmap <buffer> P 5<plug>UndotreePreviousState
+endfunc
