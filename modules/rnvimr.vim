@@ -23,3 +23,9 @@ let g:rnvimr_ranger_cmd = 'ranger --cmd="set column_ratios 1,1"'
 
 let g:rnvimr_presets = [
             \ {'width': 0.800, 'height': 0.800}]
+
+if has('nvim')
+  autocmd! FileType rnvimr
+  autocmd  FileType rnvimr set laststatus=0 noshowmode noruler
+              \| autocmd BufEnter * if &filetype != 'dashboard'|set laststatus=2|endif
+endif

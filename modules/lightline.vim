@@ -12,7 +12,6 @@ let g:lightline#bufferline#show_number  = 1
 let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#unnamed      = '[No Name]'
 let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#enable_nerdfont = 1
 let g:lightline#bufferline#read_only = ''
 
 let g:lightline = {
@@ -35,17 +34,22 @@ let g:lightline = {
           \ 'cocstatus' : '%<%{coc#status()}'
           \ },
       \ 'component_function' : {
-          \ 'method' : 'NearestMethodOrFunction',
+          \ 'method'    : 'NearestMethodOrFunction',
           \ 'gitbranch' : 'LightlineGitBranch',
-          \ 'filename' : 'LightlineFilename',
-          \ 'readonly' : 'LightlineReadOnly',
-          \ 'tabpage' : 'LightlineGetTabpage'
+          \ 'filetype'  : 'LightlineFiletype',
+          \ 'filename'  : 'LightlineFilename',
+          \ 'readonly'  : 'LightlineReadOnly',
+          \ 'tabpage'   : 'LightlineGetTabpage'
           \},
       \ 'component_expand' : {'buffers': 'lightline#bufferline#buffers'},
       \ 'component_type' : {'buffers': 'tabsel'}
       \ }
 
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+function! LightlineFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? WebDevIconsGetFileTypeSymbol() . ' ' . &filetype : 'no ft') : ''
+endfunction
 
 function! LightlineGitBranch()
     if !exists('g:loaded_fugitive')

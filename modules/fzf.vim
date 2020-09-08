@@ -22,7 +22,11 @@ let g:fzf_tags_command = 'ctags -R'
 " Border color
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
 
-let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
+let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info --border 
+            \ --preview="~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}" 
+            \ --color="dark" --color="fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe"
+            \ --color="info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"'
+
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 "-g '!{node_modules,.git}'
 
@@ -44,8 +48,18 @@ let g:fzf_colors =
 
 "Get Files
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--inline-info',
+    \'--preview', '$MYNVIM/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
 
+" Plugins Config
+command! -bang PluginConfig
+    \ call fzf#run(fzf#wrap({
+        \ 'source' : 'ls ~/.config/nvim/modules | sed "s/^/ /"',
+        \ 'sink' : {line -> execute('e ~/.config/nvim/modules/' . line[4:])},
+        \ 'options' : ['--layout=reverse', '--inline-info', '--preview',
+        \ '$MYNVIM/plugged/fzf.vim/bin/preview.sh ~/.config/nvim/modules/{-1}',
+        \ '--preview-window=80%']
+  \     }, <bang>0))
 
 " Get text in files with Rg
 " command! -bang -nargs=* Rg
@@ -76,3 +90,12 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+command! -bar -bang Colors     call fzf#vim#colors({'options':'--preview-window=hidden',
+            \'window': { 'width': 0.4, 'height': 0.6,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } },<bang>0)
+
+if has('nvim')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+              \| autocmd BufEnter * if &filetype != 'dashboard'|set laststatus=2|endif
+endif

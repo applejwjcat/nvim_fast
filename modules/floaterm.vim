@@ -34,3 +34,9 @@ function! CompileRun()
         exec "w"
  		execute (command)
 endfunc
+
+if has('nvim')
+  autocmd! FileType floaterm
+  autocmd  FileType floaterm set laststatus=0 noshowmode noruler
+              \| autocmd BufEnter * if &filetype != 'dashboard'|set laststatus=2|endif
+endif

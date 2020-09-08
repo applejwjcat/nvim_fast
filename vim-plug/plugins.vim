@@ -110,8 +110,8 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'vim-polyglot',
     \ 'lightline.vim',
     \ 'lightline-bufferline',
-    \ 'vim-devicons',
-    \ 'far.vim'
+    \ 'far.vim',
+    \ 'vim-devicons'
     \)
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
@@ -142,13 +142,36 @@ autocmd BufReadPost,BufNewFile *.html,*.css,*.js,*.ts,*.php ++once call itself#a
     \ 'bracey'
   \ )
 
+" Search help files
+
+function! s:plug_help_sink(line)
+  let dir = g:plugs[a:line[4:]].dir
+  for pat in ['doc/*.txt', 'README.*']
+    let match = get(split(globpath(dir, pat), "\n"), 0, '')
+    if len(match)
+      execute 'tabedit' match
+      if !filereadable(expand($MYNVIM) . '/generate/plugins_path/' . a:line)
+          call writefile(add([],match),expand($MYNVIM) . '/generate/plugins_path/' . a:line)
+      endif
+      return
+    endif
+  endfor
+  tabnew
+  execute 'Explore' dir
+endfunction
+
+command! PlugHelp call fzf#run(fzf#wrap({
+  \ 'source': map(sort(keys(g:plugs)),'" " . v:val'),
+  \ 'sink':   function('s:plug_help_sink'),
+  \ 'options': '--preview-window=80% --preview="cat $MYNVIM/generate/plugins_path/{-1} | ~/.config/nvim/generate/preview.sh " '}))
+
 " Automatically install missing plugins on startup
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
 
-  " Plugin Graveyard
+  " Plugin Graveyard{{{
 
   " Smooth scroll
   " Plug 'psliwka/vim-smoothie'
@@ -191,3 +214,6 @@ autocmd VimEnter *
   " Plug 'atishay/far.vim'
   " Closetags
   " Plug 'alvan/vim-closetag'
+	" }}}
+
+" vim: foldmethod=marker ts=2 sw=2 tw=80 noet :

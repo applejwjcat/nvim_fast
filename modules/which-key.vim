@@ -23,7 +23,7 @@ highlight default link WhichKeyDesc      Function
 " Hide status line
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
-            \| autocmd BufEnter <buffer> if &ft!='dashboard'|set laststatus=2|endif
+            \| autocmd BufEnter * if &ft!='dashboard'|set laststatus=2|endif
 
 
 " Single mappings
@@ -60,6 +60,8 @@ let g:which_key_map.p = {
       \ 'i' : [':PlugInstall'            , 'install plugins'],
       \ 'u' : [':PlugUpdate'             , 'update plugins'],
       \ 'c' : [':PlugClean'              , 'clean plugins'],
+      \ 'h' : [':PlugHelp'               , 'plugin helper'],
+      \ 'm' : [':PluginConfig'           , 'plugins config'],
       \ }
 
 " a is for actions
