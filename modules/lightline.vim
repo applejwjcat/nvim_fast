@@ -107,7 +107,7 @@ function LightlineGetTabpage()
     endif
 endfunction
 
-autocmd BufReadPost * call vista#RunForNearestMethodOrFunction()
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 autocmd BufDelete * call lightline#update()
 
 let g:lightline.subseparator = {'left':'','right':''}

@@ -8,7 +8,7 @@ function! itself#load_plugins(source_method,plugin)
         call plug#load(a:plugin)
         if filereadable(expand('$MYNVIM') . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim' )
             execute 'source' expand($MYNVIM) . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim'
-            call writefile(['source ' . expand($MYNVIM) . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim'],"/tmp/log.txt",'a')
+            " call writefile(['source ' . expand($MYNVIM) . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim'],"/tmp/log.txt",'a')
         endif
     else
         if filereadable(expand('$MYNVIM') . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim' )

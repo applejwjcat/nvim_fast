@@ -11,28 +11,28 @@ call plug#begin('~/.config/nvim/plugged')
   " Change dates fast
   Plug 'tpope/vim-speeddating', {'on':[]}
   " Files
-  Plug 'tpope/vim-eunuch', {'on': []}
+  " Plug 'tpope/vim-eunuch', {'on': []}
   " Repeat stuff
-  Plug 'tpope/vim-repeat', {'on': []}
+  " Plug 'tpope/vim-repeat', {'on': []}
   " Surround
   Plug 'tpope/vim-surround', {'on': []}
   " Better Comments
   Plug 'tpope/vim-commentary', {'on': []}
   " Have the file system follow you around
-  Plug 'airblade/vim-rooter', {'on':[]}
+  " Plug 'airblade/vim-rooter', {'on':[]}
   " auto set indent settings
   "Plug 'tpope/vim-sleuth'
 
   " Text Navigation
   Plug 'justinmk/vim-sneak', {'on': [], 'as': 'sneak'}
-  Plug 'unblevable/quick-scope', {'on': []}
+  " Plug 'unblevable/quick-scope'
   " Add some color
-  Plug 'norcalli/nvim-colorizer.lua',{'on': []}
+  " Plug 'norcalli/nvim-colorizer.lua',{'on': []}
   Plug 'luochen1990/rainbow', {'on':[]}
   " Better Syntax Support
   Plug 'sheerun/vim-polyglot', {'on':[]}
   " Cool Icons
-  Plug 'ryanoasis/vim-devicons',{'on':[]}
+  Plug 'ryanoasis/vim-devicons'
   " Auto pairs for '(' '[' '{'
   Plug 'jiangmiao/auto-pairs', {'on':[]}
   " Themes
@@ -57,7 +57,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'hardcoreplayers/dashboard-nvim'
   " Plug 'mhinz/vim-startify'
   " Vista
-  Plug 'liuchengxu/vista.vim', {'on' : []}
+  Plug 'liuchengxu/vista.vim'
+  " Plug 'liuchengxu/vista.vim', {'on' : []}
   " See what keys do like in emacs
   Plug 'liuchengxu/vim-which-key'
   " Zen mode
@@ -66,7 +67,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'honza/vim-snippets', {'on': []}
   " Plug 'mattn/emmet-vim'
   " Interactive code
-  Plug 'metakirby5/codi.vim', {'on': []}
+  " Plug 'metakirby5/codi.vim', {'on': []}
   " Debugging
   " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
   " Better tabline
@@ -78,25 +79,26 @@ call plug#begin('~/.config/nvim/plugged')
   " Find and replace
   Plug 'ChristianChiarulli/far.vim', {'on' :[]}
   " Auto change html tags
-  Plug 'AndrewRadev/tagalong.vim', {'on' :[]}
+  " Plug 'AndrewRadev/tagalong.vim', {'on' :[]}
   " live server
-  Plug 'turbio/bracey.vim', {'on' : []}
+  " Plug 'turbio/bracey.vim', {'on' : []}
   " Markdown Preview
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for': 'markdown'  }
   " Easily Create Gists
-  Plug 'mattn/vim-gist', {'on': []}
+  " Plug 'mattn/vim-gist', {'on': []}
   " Plug 'mattn/webapi-vim'
   " Add go support
   Plug 'fatih/vim-go', {'on':[]}
   " Plug 'fatih/vim-go'
   Plug 'godlygeek/tabular', {'on': []}
-  Plug 'lervag/vimtex', {'for': 'plaintex'}
+  " Plug 'lervag/vimtex', {'for': 'plaintex'}
 
 call plug#end()
 
-autocmd BufReadPost * ++once call itself#auto_load('post_source',
-    \ 'vista.vim'
-    \)
+let g:polyglot_disabled = ['autoindent']
+" autocmd BufReadPost * ++once call itself#auto_load('post_source',
+    " \ 'vista.vim'
+    " \)
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'vim-fugitive',
@@ -111,7 +113,6 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'lightline.vim',
     \ 'lightline-bufferline',
     \ 'far.vim',
-    \ 'vim-devicons'
     \)
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
@@ -121,26 +122,23 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
 autocmd BufReadPre,BufNewFile * ++once call itself#auto_load('source',
     \ 'undotree'
     \)
+
 autocmd CmdlineEnter * ++once call itself#auto_load('post_source',
-    \ 'vim-eunuch',
     \ 'tabular'
-    \)
+    \)   " \ 'vim-eunuch',
+
 autocmd CursorHold,CursorHoldI * ++once call itself#auto_load('post_source',
-    \ 'codi.vim',
     \ 'gv.vim',
-    \ 'vim-repeat',
-    \ 'vim-gist',
-    \ 'vim-rhubarb',
-    \ 'vim-rooter',
-    \)
+    \)   " \ 'vim-repeat',   \ 'vim-rhubarb',    \ 'vim-gist',     \ 'codi.vim',     \ 'vim-rooter',
+
 autocmd BufReadPre,BufNewFile *.go ++once call itself#auto_load('source','vim-go')
 
 autocmd InsertEnter * ++once call itself#auto_load('post_source','vim-snippets')
 
-autocmd BufReadPost,BufNewFile *.html,*.css,*.js,*.ts,*.php ++once call itself#auto_load('post_source',
-    \ 'tagalong',
-    \ 'bracey'
-  \ )
+" autocmd BufReadPost,BufNewFile *.html,*.css,*.js,*.ts,*.php ++once call itself#auto_load('post_source',
+"     \ 'tagalong',
+"     \ 'bracey'
+"   \ )
 
 " Search help files
 

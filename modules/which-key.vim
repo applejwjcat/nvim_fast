@@ -23,8 +23,7 @@ highlight default link WhichKeyDesc      Function
 " Hide status line
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
-            \| autocmd BufEnter * if &ft!='dashboard'|set laststatus=2|endif
-
+            \| autocmd BufLeave <buffer> set laststatus=2
 
 " Single mappings
 let g:which_key_map['/'] = [ ':call Comment()'                    , 'comment' ]
@@ -35,7 +34,7 @@ let g:which_key_map['='] = [ '<C-W>='                             , 'balance win
 let g:which_key_map['d'] = [ ':bd'                                , 'delete buffer']
 " let g:which_key_map['D'] = [ 'Dashboard'                          , 'start board' ]
 let g:which_key_map['e'] = [ ':CocCommand explorer'               , 'explorer' ]
-let g:which_key_map['f'] = [ ':Farr'                              , 'find and replace' ]
+" let g:which_key_map['f'] = [ ':Farr'                              , 'find and replace' ]
 let g:which_key_map['h'] = [ '<C-W>s'                             , 'split below']
 let g:which_key_map['m'] = [ ':call WindowSwap#EasyWindowSwap()'  , 'move window' ]
 let g:which_key_map['q'] = [ 'q'                                  , 'quit' ]
@@ -96,6 +95,13 @@ let g:which_key_map.b = {
       \ '?' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
 
+" f is for fuzzy file finder
+let g:which_key_map.f = {
+      \ 'name' : '+fzf' ,
+      \ 'f' : [':Files'                 , 'pwd files']       ,
+      \ 'p' : [':Files $MYNVIM/plugged' , 'plugins file'   ],
+      \ 'r' : [ ':Farr'                 , 'find and replace' ],
+      \ }
 " k is for task
 let g:which_key_map.k = {
       \ 'name' : '+task' ,

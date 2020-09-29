@@ -47,19 +47,74 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 "Get Files
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--inline-info',
-    \'--preview', '$MYNVIM/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+" command! -bang -nargs=? -complete=dir Files
+    " \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--inline-info',
+    " \'--preview', '$MYNVIM/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
+function! AddIcons(key,val)
+    return WebDevIconsGetFileTypeSymbol(a:val) . ' ' . a:val
+endfunction
+
+function! s:FindFile(dir)
+    let l:files = systemlist("cd " . expand(a:dir) . " && fd -t file ")
+    call map(l:files,function('AddIcons'))
+    return l:files
+endfunction
+
+function! s:Wrap_File(dir,bang)
+    if empty(a:dir)
+        let l:dir = fnamemodify(getcwd(), ':~:.')
+    else
+        let l:dir = fnamemodify(a:dir, ':~')
+    endif
+    if l:dir == ""
+        call fzf#vim#files(l:dir, {}, a:bang)
+    else
+        let l:source = s:FindFile(l:dir)
+        call fzf#vim#files(l:dir,{
+            \ 'source' : l:source,
+            \ 'sink' : {line -> execute('e ' . line[4:])},
+            \ 'options' : ['--layout=reverse', '--inline-info', '--preview',
+            \ '$MYNVIM/plugged/fzf.vim/bin/preview.sh {-1}',
+            \ '--preview-window=60%']
+            \},a:bang)
+    endif
+endfunction
+
+command! -bang -nargs=? -complete=dir Files call s:Wrap_File(<q-args>, <bang>0)
+nnoremap <Space>fg :Files $HOME/<TAB>
+" 用vim自带函数遍历所有文件，很慢
+" function! s:FileIcons(dir)
+    " let l:files = split(globpath(expand(a:dir),"**"))
+    " call map(l:files,function('AddIcons'))
+    " return l:files
+" endfunction
+
+" function! s:Wrap(dir,bang)
+    " let l:source = s:FileIcons(a:dir)
+    " call fzf#run(fzf#wrap({
+        " \ 'source' : l:source,
+        " \ 'sink' : {line -> execute('e ' . line[4:])},
+        " \ 'options' : ['--layout=reverse', '--inline-info', '--preview',
+        " \ '$MYNVIM/plugged/fzf.vim/bin/preview.sh {-1}',
+        " \ '--preview-window=80%']
+        " \},a:bang))
+" endfunction
+
+" command! -bang -nargs=? -complete=dir FileIcons call s:Wrap(<q-args>,<bang>0)
+
 
 " Plugins Config
-command! -bang PluginConfig
-    \ call fzf#run(fzf#wrap({
-        \ 'source' : 'ls ~/.config/nvim/modules | sed "s/^/ /"',
-        \ 'sink' : {line -> execute('e ~/.config/nvim/modules/' . line[4:])},
-        \ 'options' : ['--layout=reverse', '--inline-info', '--preview',
-        \ '$MYNVIM/plugged/fzf.vim/bin/preview.sh ~/.config/nvim/modules/{-1}',
-        \ '--preview-window=80%']
-  \     }, <bang>0))
+command! -bang -complete=dir PluginConfig call s:Wrap_File("~/.config/nvim/modules", <bang>0)
+
+" command! -bang PluginConfig
+"     \ call fzf#run(fzf#wrap({
+"         \ 'source' : 'ls ~/.config/nvim/modules | sed "s/^/ /"',
+"         \ 'sink' : {line -> execute('e ~/.config/nvim/modules/' . line[4:])},
+"         \ 'options' : ['--layout=reverse', '--inline-info', '--preview',
+"         \ '$MYNVIM/plugged/fzf.vim/bin/preview.sh ~/.config/nvim/modules/{-1}',
+"         \ '--preview-window=80%']
+"         \}, <bang>0))
 
 " Get text in files with Rg
 " command! -bang -nargs=* Rg
@@ -74,6 +129,8 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
   \   <bang>0)
 
+command! -bang -complete=dir -nargs=* LS
+    \ call fzf#run(fzf#wrap({'source': 'ls', 'dir': <q-args>}, <bang>0))
 " Ripgrep advanced
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'

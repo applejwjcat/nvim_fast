@@ -35,7 +35,7 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
    \ 'coc-yank',
    \ ]
 
-let g:coc_data_home='$MYNVIM/coc'
+let g:coc_data_home='~/.config/nvim/coc'
 
 "auto format cpp file when type
 autocmd FileType c,cpp inoremap ; ;<Esc>:Format<CR>bf;a
@@ -117,7 +117,9 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" use enter to comfirm the selected item
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.

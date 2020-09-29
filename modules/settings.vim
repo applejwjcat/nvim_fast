@@ -56,18 +56,6 @@ let g:node_host_prog = '/usr/lib/node_modules/neovim/bin/cli.js'
 " 打开文件自动定位到最后编辑的位置
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
-let g:clipboard = {
-    \   'name' : 'myclipboard',
-    \   'copy' : {
-        \ '+' : 'xsel --nodetach -i -b',
-        \ '*' : 'xsel --nodetach -i -p',
-  \     },
-  \     'paste' : {
-      \ '+' : 'xsel -o -b',
-      \ '*' : 'xsel -o -p',
-  \   },
-  \     'cache_enabled': 1,
-  \ }
 set guifont=Fira\ Code\ Nerd\ Font
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set mmp=1300
