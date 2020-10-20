@@ -30,6 +30,8 @@ function! CompileRun()
 				let command = "FloatermNew bash " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'python'
 				let command = "FloatermNew python " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
+        elseif &filetype == 'tex'
+                let command = "call vimtex#compiler#compile()"
 		endif
         exec "w"
  		execute (command)

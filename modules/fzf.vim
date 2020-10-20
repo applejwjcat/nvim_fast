@@ -22,8 +22,8 @@ let g:fzf_tags_command = 'ctags -R'
 " Border color
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
 
+"             \ --preview="~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}" 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info --border 
-            \ --preview="~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}" 
             \ --color="dark" --color="fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe"
             \ --color="info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"'
 
@@ -55,22 +55,16 @@ function! AddIcons(key,val)
     return WebDevIconsGetFileTypeSymbol(a:val) . ' ' . a:val
 endfunction
 
-function! s:FindFile(dir)
-    let l:files = systemlist("cd " . expand(a:dir) . " && fd -t file ")
-    call map(l:files,function('AddIcons'))
-    return l:files
-endfunction
-
 function! s:Wrap_File(dir,bang)
     if empty(a:dir)
         let l:dir = fnamemodify(getcwd(), ':~:.')
     else
         let l:dir = fnamemodify(a:dir, ':~')
     endif
-    if l:dir == ""
+    if l:dir == "~" || l:dir == ""
         call fzf#vim#files(l:dir, {}, a:bang)
     else
-        let l:source = s:FindFile(l:dir)
+        let l:source = map(systemlist("cd " . expand(l:dir) . " && fd -t file "),function('AddIcons'))
         call fzf#vim#files(l:dir,{
             \ 'source' : l:source,
             \ 'sink' : {line -> execute('e ' . line[4:])},
@@ -83,6 +77,27 @@ endfunction
 
 command! -bang -nargs=? -complete=dir Files call s:Wrap_File(<q-args>, <bang>0)
 nnoremap <Space>fg :Files $HOME/<TAB>
+
+" History
+function! s:history(arg, extra, bang)
+  let bang = a:bang || a:arg[len(a:arg)-1] == '!'
+  if a:arg[0] == ':'
+    call fzf#vim#command_history(bang)
+  elseif a:arg[0] == '/'
+    call fzf#vim#search_history(bang)
+  else
+      call fzf#vim#history({
+  \ 'source':  map(fzf#vim#_recent_files(),function('AddIcons')),
+  \ 'sink' : {line -> execute('e ' . line[4:])},
+  \ 'options': ['-m', '--header-lines', !empty(expand('%')), '--prompt', 'Hist> ',
+  \ '--layout=reverse', '--inline-info', '--preview',
+  \ '$MYNVIM/plugged/fzf.vim/bin/preview.sh {-1}',
+  \ '--preview-window=60%']
+  \},bang)
+  endif
+endfunction
+
+command!      -bang -nargs=* History                   call s:history(<q-args>, {}, <bang>0)
 " 用vim自带函数遍历所有文件，很慢
 " function! s:FileIcons(dir)
     " let l:files = split(globpath(expand(a:dir),"**"))

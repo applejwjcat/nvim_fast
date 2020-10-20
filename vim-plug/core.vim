@@ -25,6 +25,7 @@ source $HOME/.config/nvim/modules/commentary.vim
 " source $HOME/.config/nvim/modules/lightline.vim
 " source $HOME/.config/nvim/modules/vim-gitgutter.vim
 source $HOME/.config/nvim/modules/floaterm.vim
+source $HOME/.config/nvim/modules/vimtex.vim
 " source $HOME/.config/nvim/modules/vim-polyglot.vim
 " source $HOME/.config/nvim/modules/tagalong.vim
 " source $HOME/.config/nvim/modules/sneak.vim

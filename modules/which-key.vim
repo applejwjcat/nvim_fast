@@ -49,6 +49,7 @@ let g:which_key_map['z'] = [ 'Goyo'                               , 'zen' ]
 let g:which_key_map.v = {
   \ 'name' : '+load-settings' ,
   \ 'c' : [':e ' . g:plugin_core_file           , 'load core_file'],
+  \ 'n' : [':enew'                              , 'new file'],
   \ 'p' : [':e ' . g:plugin_manager_file        , 'load plugins'],
   \ 's' : [':e $MYNVIM/modules/settings.vim'   , 'load settings'],
   \ 'v' : ['<C-W>v'                            , 'split right'],
@@ -98,8 +99,14 @@ let g:which_key_map.b = {
 " f is for fuzzy file finder
 let g:which_key_map.f = {
       \ 'name' : '+fzf' ,
+      \ 'b' : [':Buffers'               , 'open buffers'],
+      \ 'c' : [':Colors'                , 'color schemes'],
       \ 'f' : [':Files'                 , 'pwd files']       ,
+      \ 'h' : [':History'               , 'file history'],
+      \ 'H' : [':History:'              , 'command history'],
+      \ 'm' : [':Marks'                 , 'marks'] ,
       \ 'p' : [':Files $MYNVIM/plugged' , 'plugins file'   ],
+      \ 't' : [':Rg'                    , 'text Rg'],
       \ 'r' : [ ':Farr'                 , 'find and replace' ],
       \ }
 " k is for task
@@ -130,18 +137,16 @@ let g:which_key_map.s = {
       \ 'B' : [':Buffers'               , 'open buffers'],
       \ 'c' : [':Commits'               , 'commits'],
       \ 'C' : [':BCommits'              , 'buffer commits'],
-      \ 'f' : [':Files'                 , 'files'],
       \ 'g' : [':GFiles'                , 'git files'],
-      \ 'G' : [':GFiles?'               , 'modified git files'],
       \ 'h' : [':History'               , 'file history'],
       \ 'H' : [':History:'              , 'command history'],
+      \ 'G' : [':GFiles?'               , 'modified git files'],
       \ 'l' : [':Lines'                 , 'lines'] ,
       \ 'm' : [':Marks'                 , 'marks'] ,
       \ 'M' : [':Maps'                  , 'normal maps'] ,
       \ 'p' : [':Helptags'              , 'help tags'] ,
       \ 'P' : [':Tags'                  , 'project tags'],
       \ 's' : [':CocList snippets'      , 'snippets'],
-      \ 'S' : [':Colors'                , 'color schemes'],
       \ 't' : [':Rg'                    , 'text Rg'],
       \ 'T' : [':BTags'                 , 'buffer tags'],
       \ 'w' : [':Windows'               , 'search windows'],
@@ -250,20 +255,11 @@ let g:which_key_map.t = {
 
 " T is for terminal
 let g:which_key_map.T = {
-      \ 'name' : '+tabline' ,
-      \ 'b' : [':XTabListBuffers'         , 'list buffers'],
-      \ 'd' : [':XTabCloseBuffer'         , 'close buffer'],
-      \ 'D' : [':XTabDeleteTab'           , 'close tab'],
-      \ 'h' : [':XTabHideBuffer'          , 'hide buffer'],
-      \ 'i' : [':XTabInfo'                , 'info'],
-      \ 'l' : [':XTabLock'                , 'lock tab'],
-      \ 'm' : [':XTabMode'                , 'toggle mode'],
+      \ 'name' : '+tabfile' ,
+      \ 'e' : [':enew'                    , 'new file'],
       \ 'n' : [':tabNext'                 , 'next tab'],
-      \ 'N' : [':XTabMoveBufferNext'      , 'buffer->'],
       \ 't' : [':tabnew'                  , 'new tab'],
       \ 'p' : [':tabprevious'             , 'prev tab'],
-      \ 'P' : [':XTabMoveBufferPrev'      , '<-buffer'],
-      \ 'x' : [':XTabPinBuffer'           , 'pin buffer'],
       \ }
 
 " w is for wiki

@@ -171,8 +171,6 @@
 	"git.enableGlobalStatus": false,
 	"git.signOffset": 2,
 	// "pairs.disableLanguages": ["cpp", "c"],
-	"flutter.openDevLogSplitCommand": "botright 12split",
-	"tslint.autoFixOnSave": false,
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
 	"python.formatting.provider": "yapf",
@@ -186,10 +184,7 @@
 	"javascript.suggest.names": true,
 	"javascript.suggestionActions.enabled": true,
 	"json.format.enable": true,
-	"eslint.autoFixOnSave": false,
 	"prettier.printWidth": 100,
-	"todolist.autoUpload": true,
-	"todolist.promptForReminder": false,
 	"coc-actions.hideCursor": false,
 	"coc-actions.showActionKind": true,
 	"diagnostic-languageserver.filetypes": {
@@ -221,16 +216,16 @@
 			"args": ["start"],
 			"filetypes": ["sh"]
 			// "ignoredRootPaths": ["~"]
+		},
+		"ccls": {
+			"command": "ccls",
+			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
+			"initializationOptions": {
+				"cache": {
+					"directory": "/tmp/ccls"
+				}
+			}
 		}
-		// "ccls": {
-		// "command": "ccls",
-		// "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-		// "rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
-		// "initializationOptions": {
-		// "cache": {
-		// "directory": "/tmp/ccls"
-		// }
-		// }
-		// }
 	}
 }
