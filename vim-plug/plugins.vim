@@ -44,7 +44,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'kevinhwang91/rnvimr'
   " FZF
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf', { 'dir': '~/.config/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   " Git
   Plug 'airblade/vim-gitgutter',{'on' :[]}
@@ -54,7 +54,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Terminal
   Plug 'voldikss/vim-floaterm'
   " Start Screen
-  Plug 'hardcoreplayers/dashboard-nvim',{'commit': 'ca6d597', 'frozen': 1}
+  Plug 'hardcoreplayers/dashboard-nvim',{'commit': '9f0bff0', 'frozen': 1}
   " Plug 'mhinz/vim-startify'
   " Vista
   Plug 'liuchengxu/vista.vim'
