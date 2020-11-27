@@ -59,7 +59,6 @@
 		"value": "\uf89f",
 		"variable": "\ue71b"
 	},
-	"diagnostic.signOffset": 1,
 	"diagnostic.errorSign": " ",
 	"diagnostic.warningSign": " ",
 	"diagnostic.infoSign": "",
@@ -104,10 +103,10 @@
 	"explorer.icon.enableNerdfont": true,
 	"explorer.previewAction.onHover": true,
 	"explorer.icon.enableVimDevicons": true,
-	"explorer.file.column.git.showIgnored": true,
+	"explorer.git.showIgnored": true,
 	"explorer.keyMappingMode": "none",
 	"explorer.buffer.showHiddenBuffers": false,
-	"explorer.keyMappings": {
+	"explorer.keyMappings.global": {
 		"u": "nodePrev",
 		"e": "nodeNext",
 		"h": "toggleSelection",
@@ -210,6 +209,11 @@
 				"diagnosticsEnabled": true,
 				"lintTool": "golint"
 			}
+		},
+		"fortran": {
+			"command": "fortls",
+			"filetypes": ["fortran"],
+			"rootPatterns": [".fortls", ".git/"]
 		},
 		"bash": {
 			"command": "bash-language-server",

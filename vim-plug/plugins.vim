@@ -74,6 +74,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mengelbrecht/lightline-bufferline',{'on' :[]}
   " undo time travel
   Plug 'applejwjcat/undotree', {'on': []}
+  " Plug 'mbbill/undotree', {'on': []}
   " highlight all matches under cursor
   Plug 'RRethy/vim-illuminate', {'on': []}
   " Find and replace
@@ -112,14 +113,15 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'vim-polyglot',
     \ 'lightline.vim',
     \ 'lightline-bufferline',
+		\ 'vim-snippets',
     \ 'far.vim',
     \)
-
+autocmd BufReadPost,BufNewFile *.f90 ++once call itself#auto_load('post_source','format')
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
     \ 'sneak',
     \)
 
-autocmd BufReadPre,BufNewFile * ++once call itself#auto_load('source',
+autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
     \ 'undotree'
     \)
 
@@ -133,8 +135,9 @@ autocmd CursorHold,CursorHoldI * ++once call itself#auto_load('post_source',
 
 autocmd BufReadPre,BufNewFile *.go ++once call itself#auto_load('source','vim-go')
 
-autocmd InsertEnter * ++once call itself#auto_load('post_source','vim-snippets')
+autocmd BufNewFile,BufReadPost *.nml set filetype=nml
 
+autocmd BufWritePost *.f90  call Format_fortran()
 " autocmd BufReadPost,BufNewFile *.html,*.css,*.js,*.ts,*.php ++once call itself#auto_load('post_source',
 "     \ 'tagalong',
 "     \ 'bracey'

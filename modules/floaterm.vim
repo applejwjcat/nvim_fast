@@ -22,6 +22,8 @@ function! CompileRun()
 		let filename = expand('%:t:r')
 		if &filetype == 'cpp'
 				let command = "FloatermNew g++ " . pathfile . " -o /tmp/" . filename . ".out;/tmp/" . filename . ".out;read \\?\"\nPress enter to continue...\";exit"
+		elseif &filetype == 'fortran'
+				let command = "FloatermNew ifort " . pathfile . " -o /tmp/" . filename . ".out;/tmp/" . filename . ".out;read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'c'
 				let command = "FloatermNew gcc " . pathfile . " -o /tmp/" . filename . ".out;/tmp/" . filename . ".out;read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'go'

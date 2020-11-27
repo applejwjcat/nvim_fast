@@ -7,3 +7,4 @@ function! Comment()
  endfunction
 vnoremap <silent> <space>/ :call Comment()
 autocmd FileType json setlocal commentstring=//\ %s
+autocmd FileType nml setlocal commentstring=!\ %s
