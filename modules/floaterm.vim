@@ -30,8 +30,13 @@ function! CompileRun()
 				let command = "FloatermNew go run " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
 		elseif &filetype == 'sh'
 				let command = "FloatermNew bash " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
+        elseif &filetype == 'markdown'
+				let command = ''
+                exec "MarkdownPreview"
 		elseif &filetype == 'python'
 				let command = "FloatermNew python " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
+		elseif &filetype == 'mma'
+				let command = "FloatermNew wolframscript -f " . pathfile . ";read \\?\"\nPress enter to continue...\";exit"
         elseif &filetype == 'tex'
                 let command = "call vimtex#compiler#compile()"
 		endif

@@ -27,7 +27,6 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
    \ 'coc-snippets',
    \ 'coc-svg',
    \ 'coc-tasks',
-   \ 'coc-texlab',
    \ 'coc-translator',
    \ 'coc-tsserver',
    \ 'coc-vimlsp',

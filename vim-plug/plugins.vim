@@ -57,8 +57,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'hardcoreplayers/dashboard-nvim',{'commit': '9f0bff0', 'frozen': 1}
   " Plug 'mhinz/vim-startify'
   " Vista
-  Plug 'liuchengxu/vista.vim'
-  " Plug 'liuchengxu/vista.vim', {'on' : []}
+  " Plug 'liuchengxu/vista.vim'
+  Plug 'liuchengxu/vista.vim', {'on' : []}
   " See what keys do like in emacs
   Plug 'liuchengxu/vim-which-key'
   " Zen mode
@@ -93,13 +93,14 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'fatih/vim-go'
   Plug 'godlygeek/tabular', {'on': []}
   Plug 'lervag/vimtex'
-
-call plug#end()
+	" Markdown 
+	Plug 'plasticboy/vim-markdown'
+	call plug#end()
 
 let g:polyglot_disabled = ['autoindent']
-" autocmd BufReadPost * ++once call itself#auto_load('post_source',
-    " \ 'vista.vim'
-    " \)
+autocmd BufReadPost * ++once call itself#auto_load('post_source',
+    \ 'vista.vim'
+    \)
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'vim-fugitive',
@@ -117,6 +118,7 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'far.vim',
     \)
 autocmd BufReadPost,BufNewFile *.f90 ++once call itself#auto_load('post_source','format')
+
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
     \ 'sneak',
     \)
