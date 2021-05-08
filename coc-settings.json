@@ -1,5 +1,4 @@
 {
-	"coc.preferences.hoverTarget": "float",
 	"coc.preferences.enableFloatHighlight": true,
 	// "coc.preferences.snippetStatusText": "Ⓢ ", "🌟"
 	"coc.preferences.snippetStatusText": "🌟",
@@ -65,7 +64,6 @@
 	"diagnostic.hintSign": " ",
 	"diagnostic.displayByAle": false,
 	"diagnostic.refreshOnInsertMode": false,
-	"diagnostic.refreshAfterSave": false,
 	"diagnostic.checkCurrentLine": true,
 	"diagnostic.virtualTextPrefix": " ❯❯❯ ",
 	"diagnostic.virtualText": true,
@@ -101,7 +99,7 @@
 	"explorer.file.column.indent.indentLine": true,
 	"explorer.file.showHiddenFiles": true,
 	"explorer.icon.enableNerdfont": true,
-	"explorer.previewAction.onHover": true,
+	"explorer.previewAction.onHover": "content",
 	"explorer.icon.enableVimDevicons": true,
 	"explorer.git.showIgnored": true,
 	"explorer.keyMappingMode": "none",
@@ -168,7 +166,6 @@
 	"git.topRemovedSign.text": "▔",
 	"git.changeRemovedSign.text": "▒",
 	"git.enableGlobalStatus": false,
-	"git.signOffset": 2,
 	// "pairs.disableLanguages": ["cpp", "c"],
 	"python.autoComplete.addBrackets": true,
 	"python.jediEnabled": false,
