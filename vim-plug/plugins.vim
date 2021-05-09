@@ -65,6 +65,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
   " Snippets
   Plug 'honza/vim-snippets', {'on': []}
+  " Plug 'SirVer/ultisnips',{'on':[]}
   " Plug 'mattn/emmet-vim'
   " Interactive code
   " Plug 'metakirby5/codi.vim', {'on': []}
@@ -117,6 +118,7 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
 		\ 'vim-snippets',
     \ 'far.vim',
     \)
+    " \ 'ultisnips',
 autocmd BufReadPost,BufNewFile *.f90 ++once call itself#auto_load('post_source','format')
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
