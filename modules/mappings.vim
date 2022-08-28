@@ -50,7 +50,7 @@ inoremap <silent> <C-s> <Esc>:w<CR>
 " Alternate way to quit
 nnoremap <silent> <C-Q> :wq!<CR>
 " <TAB>: completion.
-inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent> <expr><TAB> coc#pum#visible() ? coc#pum#next(1)  : "\<TAB>"
 
 " Better window navigation
 nnoremap <C-h> <C-w>h

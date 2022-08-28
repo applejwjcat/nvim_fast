@@ -120,7 +120,7 @@ command!      -bang -nargs=* History                   call s:history(<q-args>, 
 
 
 " Plugins Config
-command! -bang -complete=dir PluginConfig call s:Wrap_File("~/.config/nvim/modules", <bang>0)
+command! -bang -nargs=* -complete=dir PluginConfig call s:Wrap_File("~/.config/nvim/modules", <bang>0)
 
 " command! -bang PluginConfig
 "     \ call fzf#run(fzf#wrap({
