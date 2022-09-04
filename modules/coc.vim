@@ -22,6 +22,7 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
    \ 'coc-marketplace',
    \ 'coc-pairs',
    \ 'coc-prettier',
+   \ 'coc-pyright',
    \ 'coc-snippets',
    \ 'coc-svg',
    \ 'coc-tasks',
@@ -33,8 +34,6 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
    \ 'coc-yank',
    \ ]
 
-   " \ 'coc-python',
-   " \ 'coc-pyright',
 
 let g:coc_data_home='~/.config/nvim/coc'
 

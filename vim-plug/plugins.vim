@@ -27,7 +27,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'justinmk/vim-sneak', {'on': [], 'as': 'sneak'}
   " Plug 'unblevable/quick-scope'
   " Add some color
-  " Plug 'norcalli/nvim-colorizer.lua',{'on': []}
   Plug 'luochen1990/rainbow', {'on':[]}
   " Better Syntax Support
   Plug 'sheerun/vim-polyglot', {'on':[]}
@@ -54,7 +53,8 @@ call plug#begin('~/.config/nvim/plugged')
   " Terminal
   Plug 'voldikss/vim-floaterm'
   " Start Screen
-  Plug 'hardcoreplayers/dashboard-nvim',{'commit': '9f0bff0', 'frozen': 1}
+	Plug 'applejwjcat/dashboard-nvim'
+	" Plug 'hardcoreplayers/dashboard-nvim',{'commit': '9f0bff0', 'frozen': 1}
   " Plug 'mhinz/vim-startify'
   " Vista
   " Plug 'liuchengxu/vista.vim'
@@ -72,6 +72,8 @@ call plug#begin('~/.config/nvim/plugged')
   " Debugging
   " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
   " Better tabline
+	" python highlighting
+	Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
   Plug 'mengelbrecht/lightline-bufferline',{'on' :[]}
   " undo time travel
   Plug 'applejwjcat/undotree', {'on': []}
