@@ -217,17 +217,17 @@
 			"args": ["start"],
 			"filetypes": ["sh"]
 			// "ignoredRootPaths": ["~"]
-		},
-		"ccls": {
-			"command": "ccls",
-			"filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
-			"rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-			"trace.server": "verbose",
-			"initializationOptions": {
-				"cache": {
-					"directory": "/tmp/ccls"
-				}
-			}
 		}
+		// "ccls": {
+		// "command": "ccls",
+		// "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+		// "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+		// "trace.server": "verbose",
+		// "initializationOptions": {
+		// "cache": {
+		// "directory": "/tmp/ccls"
+		// }
+		// }
+		// }
 	}
 }
