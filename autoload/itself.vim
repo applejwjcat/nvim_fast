@@ -5,7 +5,9 @@ let g:auto_load_plugins = 1
 
 function! itself#load_plugins(source_method,plugin)
     if a:source_method == 'post_source'
-        call plug#load(a:plugin)
+        if a:plugin != 'format'
+            call plug#load(a:plugin)
+        endif
         if filereadable(expand('$MYNVIM') . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim' )
             execute 'source' expand($MYNVIM) . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim'
             " call writefile(['source ' . expand($MYNVIM) . '/modules/' . fnamemodify(a:plugin, ":r") . '.vim'],"/tmp/log.txt",'a')

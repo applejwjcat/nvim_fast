@@ -95,9 +95,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'fatih/vim-go', {'on':[]}
   " Plug 'fatih/vim-go'
   Plug 'godlygeek/tabular', {'on': []}
-  Plug 'lervag/vimtex'
+	Plug 'lervag/vimtex',{'on':[]}
 	" Markdown 
-	Plug 'plasticboy/vim-markdown'
+	Plug 'plasticboy/vim-markdown',{'on':[]}
 	call plug#end()
 
 let g:polyglot_disabled = ['autoindent']
@@ -112,7 +112,6 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'vim-commentary',
     \ 'vim-surround',
     \ 'vim-speeddating',
-    \ 'ultisnips',
     \ 'rainbow',
     \ 'vim-gitgutter',
     \ 'vim-polyglot',
@@ -122,9 +121,11 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'far.vim',
     \)
 autocmd BufReadPost,BufNewFile *.f90 ++once call itself#auto_load('post_source','format')
+autocmd BufReadPost,BufNewFile *.md ++once call itself#auto_load('post_source','vim-markdown')
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
     \ 'sneak',
+    \ 'ultisnips',
     \)
 
 autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('source',
@@ -141,7 +142,6 @@ autocmd CursorHold,CursorHoldI * ++once call itself#auto_load('post_source',
 
 autocmd BufReadPre,BufNewFile *.go ++once call itself#auto_load('source','vim-go')
 autocmd BufReadPre,BufNewFile *.tex ++once call itself#auto_load('post_source','vimtex')
-" autocmd BufReadPre,BufNewFile *.tex ++once call itself#auto_load('source','vimtex')
 
 autocmd BufNewFile,BufReadPost *.nml set filetype=nml
 
