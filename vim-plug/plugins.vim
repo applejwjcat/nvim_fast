@@ -73,7 +73,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python --enable-go'}
   " Better tabline
 	" python highlighting
-	Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
+	" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for' :['python', 'vim-plug'] }
   Plug 'mengelbrecht/lightline-bufferline',{'on' :[]}
   " undo time travel
   Plug 'applejwjcat/undotree', {'on': []}
