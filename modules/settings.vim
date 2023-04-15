@@ -66,7 +66,7 @@ set guifont=Fira\ Code\ Nerd\ Font
 
 " au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 " You can't stop me
-cmap w!! w !sudo tee %
+cmap w!! :SudaWrite<CR>
 " set correct plugin file according to the plugin manager
 if exists('g:loaded_plug')
     let g:plugin_manager_file = '$MYNVIM/vim-plug/plugins.vim'
