@@ -77,3 +77,8 @@ nnoremap <silent> <M-l>    :vertical resize +2<CR>
 " setlocal spell
 " set spelllang=en_us
 " inoremap <C-c> <c-g>u<Esc>[s1z=`]a<c-g>u
+" set for thr undofile
+if has('persistent_undo')
+    set undofile
+    set undodir=~/.config/nvim/generate/undotreetmp/undo,.
+endif
