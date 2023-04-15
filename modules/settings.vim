@@ -76,3 +76,5 @@ else
     let g:plugin_core_file = '$MYNVIM/dein/core.vim'
 endif
 let g:vimtex_view_method = 'zathura'
+" set the cursor when exit the nvim
+au VimLeave * set guicursor=a:ver25-blinkon0
