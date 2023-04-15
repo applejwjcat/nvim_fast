@@ -77,6 +77,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mengelbrecht/lightline-bufferline',{'on' :[]}
   " undo time travel
   Plug 'applejwjcat/undotree', {'on': []}
+  Plug 'lambdalisue/suda.vim', {'on': []}
   " Plug 'mbbill/undotree', {'on': []}
   " highlight all matches under cursor
   Plug 'RRethy/vim-illuminate', {'on': []}
@@ -119,6 +120,7 @@ autocmd BufReadPost,BufNewFile * ++once call itself#auto_load('post_source',
     \ 'lightline-bufferline',
 		\ 'vim-snippets',
     \ 'far.vim',
+    \ 'suda.vim',
     \)
 autocmd BufReadPost,BufNewFile *.f90 ++once call itself#auto_load('post_source','format')
 autocmd BufReadPost,BufNewFile *.md ++once call itself#auto_load('post_source','vim-markdown')
